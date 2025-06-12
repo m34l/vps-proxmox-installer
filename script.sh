@@ -8,6 +8,8 @@ download_image() {
   local url="$2"
   local target="/var/lib/vz/template/qcow2/$filename"
 
+  mkdir -p "$(dirname "$target")"
+
   if [ -f "$target" ]; then
     echo "Image $filename already exists."
   else
@@ -15,6 +17,7 @@ download_image() {
     wget -O "$target" "$url"
   fi
 }
+
 
 # OS selection
 echo "Select OS Template:"
